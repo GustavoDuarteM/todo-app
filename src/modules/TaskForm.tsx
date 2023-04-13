@@ -1,15 +1,16 @@
 import { PlusCircle } from '@phosphor-icons/react';
 import styles from './TaskForm.module.css'
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { TaskList } from './TaskList';
 
-interface Task{
+export interface Task{
   content: string,
   status: string
 }
 
 export function TaskForm(){
   const [task, setTask] = useState('') 
-  const [taskList, setTaskList] = useState<Task[]>([])
+  const [taskList, setTaskList] = useState(new Array<Task>())
 
   const isNewTaskEmpty = task.length == 0
 
@@ -23,7 +24,6 @@ export function TaskForm(){
     const newTaskList = [...taskList, newTask]
     setTaskList(newTaskList) 
     setTask('') 
-    console.log(taskList)
   }
 
   return(
@@ -42,6 +42,8 @@ export function TaskForm(){
           <PlusCircle size={22}/> 
         </button>
       </form>
+
+      <TaskList taskList={taskList}/>
     </div>
   );
 }
