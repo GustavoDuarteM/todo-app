@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
+import { Header } from './modules/Header'
+import { TaskForm } from './modules/TaskForm'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
+      <Header/>
+      <TaskForm/>
     </div>
   )
 }

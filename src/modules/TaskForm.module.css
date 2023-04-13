@@ -1,0 +1,28 @@
+.taskForm{
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: -1.687rem
+}
+
+.taskForm input{
+  padding: 1rem;
+  border: 0;
+  background: var(--gray-500);
+  border: 1px solid var(--gray-700);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 46rem;
+}
+
+.taskForm button{
+  border: 0;
+  padding: 1rem;
+  background: var(--blue-dark);
+  font-size: var(--small-text);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem
+}

@@ -15,9 +15,9 @@
   --blue: #4EA8DE;
   --blue-dark: #1E6F9F;
 
-  --small-text: 12px;
-  --regular-text: 14px;
-  --large-text: 14px;
+  --x-small-text: 0.75rem;
+  --small-text: 0.875rem;
+  --regurlar-text: 1rem;
 }
 
 *{
@@ -41,5 +41,7 @@ body {
 body, input, textarea, button {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: var(--regurlar-text);
+  line-height: 140%;
+  color: var(--gray-100);
 }
