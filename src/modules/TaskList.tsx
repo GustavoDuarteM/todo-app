@@ -11,15 +11,13 @@ interface TaskListProps{
 
 export function TaskList({ taskList, setTaskList }:TaskListProps){
   const taskListCount = taskList.length
-  const doneTaskListCount = taskList.filter(task => task.status == 'done').length
+  const doneTaskListCount = taskList.filter(task => task.isDone ).length
   
   function handlerChangeTaskStatus(event:  MouseEvent<HTMLButtonElement>){
     event.preventDefault();
     const event_i:any = event.currentTarget.value;
     const newTaskList = taskList.map((task) => {
-      if (task == taskList[event_i]){
-        task.status =  task.status == 'todo' ? 'done': 'todo'
-      }
+      if (task.id == event_i){ task.isDone = !task.isDone }
       return task
     })
     setTaskList(newTaskList);
@@ -27,8 +25,8 @@ export function TaskList({ taskList, setTaskList }:TaskListProps){
   
   function handlerDeleteTask(event:  MouseEvent<HTMLButtonElement>){
     event.preventDefault();
-    const event_i:any = event.currentTarget.value;
-    const newTaskList = taskList.filter((task) => task != taskList[event_i])
+    const event_id:string = event.currentTarget.value;
+    const newTaskList = taskList.filter((task) => task.id != event_id)
     setTaskList(newTaskList);
   }
 
@@ -46,17 +44,20 @@ export function TaskList({ taskList, setTaskList }:TaskListProps){
       </header>
       <main>
         {
-          taskList.map((task, i)=>{
+          taskList.map((task)=>{
             return(
-              <div className={styles.taskItem} key={i}>
-                <button className={styles.taskItemSatus } onClick={handlerChangeTaskStatus} value={i}>
-                    {task.status == "done" && <Check  size={24} className={styles.checkCircle} /> }
-                    {task.status == "todo" && <Circle size={24} className={styles.circle }/> }
+              <div className={styles.taskItem} key={task.id}>
+                <button className={styles.taskItemSatus } onClick={handlerChangeTaskStatus} value={task.id}>
+                    {
+                      task.isDone ? 
+                        (<Check  size={24} className={styles.checkCircle} /> ) : 
+                        (<Circle size={24} className={styles.circle }/> )
+                    }
                 </button>
                 <div className={styles.taskItemContent}>
                   <p>{task.content}</p>
                 </div>
-                <button className={styles.taskItemDelete} onClick={handlerDeleteTask} value={i}>
+                <button className={styles.taskItemDelete} onClick={handlerDeleteTask} value={task.id}>
                   <Trash/>
                 </button>
               </div>

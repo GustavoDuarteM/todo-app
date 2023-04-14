@@ -2,10 +2,12 @@ import { PlusCircle } from '@phosphor-icons/react';
 import styles from './TaskForm.module.css'
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { TaskList } from './TaskList';
+import { v4 as uuidv4 } from 'uuid';
 
 export interface Task{
+  id: string,
   content: string,
-  status: string
+  isDone: boolean
 }
 
 export function TaskForm(){
@@ -20,7 +22,7 @@ export function TaskForm(){
 
   function handlerNewTask(event: FormEvent)  {
     event.preventDefault()
-    const newTask:Task = {content: task, status: 'todo'}
+    const newTask:Task = {id: uuidv4(), content: task, isDone: false}
     const newTaskList = [...taskList, newTask]
     setTaskList(newTaskList) 
     setTask('') 
