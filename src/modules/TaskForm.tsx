@@ -43,7 +43,7 @@ export function TaskForm(){
         </button>
       </form>
 
-      <TaskList taskList={taskList}/>
+      <TaskList taskList={taskList} setTaskList={setTaskList}/>
     </div>
   );
 }

@@ -27,10 +27,8 @@
   line-height: 140%;
 }
 
-
 :focus{
   outline: transparent;
-  box-shadow: 0 0 0 1px var(--purple-dark);
 }  
 
 body {

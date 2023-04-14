@@ -9,10 +9,13 @@
   padding: 1rem;
   border: 0;
   background: var(--gray-500);
-  border: 1px solid var(--gray-700);
   border-radius: 8px;
   width: 100%;
   max-width: 39.875rem;
+}
+
+.taskForm input:focus{
+  box-shadow: 0 0 0 1px var(--purple-dark);
 }
 
 .taskForm button{
