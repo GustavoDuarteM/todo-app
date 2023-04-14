@@ -55,7 +55,7 @@ export function TaskList({ taskList, setTaskList }:TaskListProps){
                     }
                 </button>
                 <div className={styles.taskItemContent}>
-                  <p>{task.content}</p>
+                  <p className={task.isDone ? styles.taskItemContentDone : ''} >{task.content}</p>
                 </div>
                 <button className={styles.taskItemDelete} onClick={handlerDeleteTask} value={task.id}>
                   <Trash/>
